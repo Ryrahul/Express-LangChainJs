@@ -11,7 +11,7 @@ import { combineDocs } from "./combineDocumnets";
 import { retriever } from "./retriver";
 
 const openAIApiKey: string = process.env.OPEN_AI_API_KEY || "";
-const llm = new ChatOpenAI({ openAIApiKey, temperature: 1 });
+const llm = new ChatOpenAI({ openAIApiKey, temperature: 0 });
 
 const standaloneQuestionTemplate = `Given  question, convert the question to a standalone question. 
 
@@ -21,7 +21,7 @@ const standaloneQuestionPrompt = PromptTemplate.fromTemplate(
   standaloneQuestionTemplate
 );
 
-const answerTemplate: string = `You are a helpful and enthusiastic support bot who can answer a given question based on the context provided  . Try to find the answer in the context . . If you really don't know the answer, say "I'm sorry, I don't know the answer to that.". Don't try to make up an answer. Always speak as if you were chatting to a friend.
+const answerTemplate: string = `You are a helpful and enthusiastic support bot who can answer a given question based on the context provided  . Try to find the answer in the context and evaluate the context properly and answer  . If you really don't know the answer, say "I'm sorry, I don't know the answer to that.". Don't try to make up an answer. Always speak as if you were chatting to a friend.
 context: {context}
 
 
@@ -52,6 +52,5 @@ const chain = RunnableSequence.from([
   },
   answerChain,
 ]);
-
 
 export { chain };

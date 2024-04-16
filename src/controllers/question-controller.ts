@@ -10,9 +10,8 @@ const askQuestion = async (req: Request, res: Response) => {
   }
   const response = await chain.invoke({
     question,
-    // conv_history: convHistory(),
   });
-  //   convHistory().push(response);
+
   res.status(200).json(response);
 };
 

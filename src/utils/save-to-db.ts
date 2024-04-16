@@ -10,14 +10,9 @@ const sbApiKey: string = process.env.SUPABASE_API_KEY || "";
 const sbUrl: string = process.env.SUPABASE_API_URL || "";
 const client = createClient(sbUrl, sbApiKey);
 (async () => {
-  const loader = new CSVLoader("./Fire-Incidents.csv");
+  const loader = new CSVLoader("./datafile.csv");
   const docs = await loader.load();
 
-  // const text = await fs.readFile("./dataset.xlsx", "utf-8");
-  // const splitter = new RecursiveCharacterTextSplitter({
-  //   chunkSize: 500,
-  //   chunkOverlap: 50,
-  // });
   const openAIApiKey = process.env.OPEN_AI_API_KEY;
 
   // const output = await splitter.createDocuments([docs]);
