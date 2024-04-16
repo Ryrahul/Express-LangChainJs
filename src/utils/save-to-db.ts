@@ -1,24 +1,33 @@
-// import "dotenv/config";
-// import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
-// import { promises as fs } from "fs";
+import "dotenv/config";
+import { promises as fs } from "fs";
+import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
+import { CSVLoader } from "langchain/document_loaders/fs/csv";
 
-// import { createClient } from "@supabase/supabase-js";
-// const client = createClient(sbApiUrl, sbApiKey);
+import { createClient } from "@supabase/supabase-js";
+import { OpenAIEmbeddings } from "@langchain/openai";
+import { SupabaseVectorStore } from "@langchain/community/vectorstores/supabase";
+const sbApiKey: string = process.env.SUPABASE_API_KEY || "";
+const sbUrl: string = process.env.SUPABASE_API_URL || "";
+const client = createClient(sbUrl, sbApiKey);
+(async () => {
+  const loader = new CSVLoader("./Fire-Incidents.csv");
+  const docs = await loader.load();
 
-// const text = await fs.readFile("./abc.txt", "utf-8");
-// const splitter = new RecursiveCharacterTextSplitter({
-//   chunkSize: 500,
-//   chunkOverlap: 50,
-// });
-// const openAIApiKey = process.env.OPEN_AI_API_KEY;
+  // const text = await fs.readFile("./dataset.xlsx", "utf-8");
+  // const splitter = new RecursiveCharacterTextSplitter({
+  //   chunkSize: 500,
+  //   chunkOverlap: 50,
+  // });
+  const openAIApiKey = process.env.OPEN_AI_API_KEY;
 
-// const output = await splitter.createDocuments([text]);
-// await SupabaseVectorStore.fromDocuments(
-//   output,
-//   new OpenAIEmbeddings({ openAIApiKey }),
-//   {
-//     client,
-//     tableName: "documents",
-//   }
-// );
-// console.log("succes");
+  // const output = await splitter.createDocuments([docs]);
+  await SupabaseVectorStore.fromDocuments(
+    docs,
+    new OpenAIEmbeddings({ openAIApiKey }),
+    {
+      client,
+      tableName: "documents",
+    }
+  );
+  console.log("succes");
+})();
