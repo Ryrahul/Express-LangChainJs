@@ -12,7 +12,7 @@ const askQuestion = async (req: Request, res: Response) => {
     question,
   });
 
-  res.status(200).json(response);
+  res.status(200).json({ data: response });
 };
 
 export { askQuestion };

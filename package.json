@@ -19,7 +19,8 @@
     "d3-dsv": "^2.0.0",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "langchain": "^0.1.33"
+    "langchain": "^0.1.33",
+    "pdf-parse": "^1.1.1"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17"

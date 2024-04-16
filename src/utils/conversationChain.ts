@@ -11,7 +11,7 @@ import { combineDocs } from "./combineDocumnets";
 import { retriever } from "./retriver";
 
 const openAIApiKey: string = process.env.OPEN_AI_API_KEY || "";
-const llm = new ChatOpenAI({ openAIApiKey, temperature: 0 });
+const llm = new ChatOpenAI({ openAIApiKey, temperature: 0, streaming: true });
 
 const standaloneQuestionTemplate = `Given  question, convert the question to a standalone question. 
 
