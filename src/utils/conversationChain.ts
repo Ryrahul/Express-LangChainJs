@@ -21,7 +21,7 @@ const standaloneQuestionPrompt = PromptTemplate.fromTemplate(
   standaloneQuestionTemplate
 );
 
-const answerTemplate: string = `You are a helpful and enthusiastic support bot who can answer a given question based on the context provided  . Try to find the answer in the context and evaluate the context properly and answer  . If you really don't know the answer, say "I'm sorry, I don't know the answer to that.". Don't try to make up an answer. Always speak as if you were chatting to a friend.
+const answerTemplate: string = `You are a helpful and enthusiastic support bot who can answer a given question based on the context provided  . Try to find the answer in the context and evaluate the context properly and answer  . If you really don't know the answer, say "I'm sorry, I don't know the answer to the question ,Ask me Regarding Fire Related Questions". Don't try to make up an answer. Always speak as if you were chatting to a friend.
 context: {context}
 
 
