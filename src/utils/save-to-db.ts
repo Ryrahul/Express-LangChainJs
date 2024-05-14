@@ -12,10 +12,10 @@
 
 // const client = createClient(sbUrl, sbApiKey);
 // (async () => {
-//   //   const loader = new CSVLoader("./datafile.csv");
+//   //   const loader = new CSVLoader("./your_file_path");
 //   //   const docs = await loader.load();
 
-//   const loader = new PDFLoader("./forestfire.pdf");
+//   const loader = new PDFLoader("./your_file_path);
 
 //   const docs = await loader.load();
 
