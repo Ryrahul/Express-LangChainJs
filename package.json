@@ -4,7 +4,6 @@
     "start": "node dist/server.js",
     "build": "tsc -p tsconfig.json",
     "format": "prettier --write src/**/** __tests__/**/*.ts",
-    "prepare": "husky install",
     "test": "jest"
   },
   "type": "commonjs",
